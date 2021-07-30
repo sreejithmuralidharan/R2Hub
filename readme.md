@@ -7,5 +7,6 @@ R2Hub is a tool for you to testing REST API
     - Users
       - Permissions
     - Collections
-    - Information
+      - 
+    - [x] Information
     - Service Plan
