@@ -9,7 +9,7 @@ from .serializers import APIRequestSerializer
 from rest_framework.exceptions import APIException
 
 from collection.models import APIRequest, Collection
-from organizations.models import Organization, OrganizationUser
+from organizations.models import Organization, Membership
 
 
 @api_view(['GET', 'POST'])
@@ -17,7 +17,7 @@ def webhook_listener(request, collection_id):
     collection_obj = Collection.objects.get(id=collection_id)
     organization_obj = Organization.objects.get(
         id=collection_obj.organization.id)
-    organization_user_obj = OrganizationUser.objects.filter(
+    organization_user_obj = Membership.objects.filter(
         user=request.user, organization=organization_obj)
     if organization_user_obj.exists():
         if request.method == 'POST':
